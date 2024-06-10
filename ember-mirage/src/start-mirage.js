@@ -2,7 +2,7 @@ import { pluralize, singularize } from 'active-inflector';
 
 import assert from './assert';
 
-export default function startMirage(
+export default async function startMirage(
   makeServer,
   { owner, env, ...otherOptions } = {},
 ) {
@@ -30,7 +30,7 @@ export default function startMirage(
     ...otherOptions,
   };
 
-  let server = makeServer(options);
+  let server = await makeServer(options);
 
   // Check to see if mirageLogging is on the URL. If so, enable logging on the server
   if (
